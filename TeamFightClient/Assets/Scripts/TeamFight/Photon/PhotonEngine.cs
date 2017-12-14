@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TeamFightCommon;
 
 public class PhotonEngine : MonoBehaviour,IPhotonPeerListener
 {
@@ -12,6 +13,16 @@ public class PhotonEngine : MonoBehaviour,IPhotonPeerListener
 
     private static PhotonEngine _instance;
     private PhotonPeer peer;
+
+    private Dictionary<byte, ControllerBase> m_controllers = new Dictionary<byte, ControllerBase>();
+
+    public static PhotonEngine Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
 
     void Awake()
     {
@@ -40,6 +51,17 @@ public class PhotonEngine : MonoBehaviour,IPhotonPeerListener
     public void OnOperationResponse(OperationResponse operationResponse)
     {
         Debug.Log("OnOperationResponse : " + operationResponse.OperationCode);
+
+        ControllerBase controller;
+        m_controllers.TryGetValue(operationResponse.OperationCode, out controller);
+        if (controller != null)
+        {
+            controller.OnOperationResponse(operationResponse);
+        }
+        else
+        {
+            Debug.LogWarning("Receive a unknown response . OperationCode :" + operationResponse.OperationCode);
+        }
     }
 
     public void OnStatusChanged(StatusCode statusCode)
@@ -47,4 +69,19 @@ public class PhotonEngine : MonoBehaviour,IPhotonPeerListener
         Debug.Log("OnStatusChanged : " + statusCode.ToString());
     }
 
+    public void RegisterController(OperationCode opCode, ControllerBase controller)
+    {
+        m_controllers.Add((byte)opCode, controller);
+    }
+
+    public void UnRegisterController(OperationCode opCode)
+    {
+        m_controllers.Remove((byte)opCode);
+    }
+
+    public void SendRequest(OperationCode opCode, Dictionary<byte, object> parameters)
+    {
+        Debug.Log("sendrequest to server , opcode : " + opCode);
+        peer.OpCustom((byte)opCode, parameters, true);
+    }
 }

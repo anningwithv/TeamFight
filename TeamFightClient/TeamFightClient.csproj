@@ -82,6 +82,9 @@
     <Reference Include="LitJson">
       <HintPath>Assets\Plugins\LitJson.dll</HintPath>
     </Reference>
+    <Reference Include="TeamFightCommon">
+      <HintPath>Assets\Plugins\TeamFightCommon.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Frame\Base\MonoBase.cs" />
@@ -100,7 +103,14 @@
     <Compile Include="Assets\Scripts\Frame\Tool\Http\JsonDataHelp.cs" />
     <Compile Include="Assets\Scripts\Frame\Tool\ReflectionCall.cs" />
     <Compile Include="Assets\Scripts\Frame\Tool\Singleton.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\Managers\PhotonManager.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\Messages\MsgLogin.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\Photon\Controller\ControllerBase.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\Photon\Controller\LoginController.cs" />
     <Compile Include="Assets\Scripts\TeamFight\Photon\PhotonEngine.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\UI\Panel\LoginPanel.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\UI\UIManager.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\UI\UIPanelBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

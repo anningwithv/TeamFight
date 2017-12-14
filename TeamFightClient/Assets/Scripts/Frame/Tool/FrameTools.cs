@@ -20,6 +20,7 @@ namespace ZW.Frame
         InputManager = FrameTools.MSG_SPAN*2,
         OPManager = FrameTools.MSG_SPAN * 3,
         AssetBundleManager = FrameTools.MSG_SPAN * 4,
+        PhotonManager = FrameTools.MSG_SPAN * 5,
     }
 
 	public class FrameTools
