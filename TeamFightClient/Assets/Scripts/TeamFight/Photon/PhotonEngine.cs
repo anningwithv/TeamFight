@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TeamFightCommon;
+using ZW.Frame;
 
-public class PhotonEngine : MonoBehaviour,IPhotonPeerListener
+public class PhotonEngine : PhotonItemBase, IPhotonPeerListener
 {
     public ConnectionProtocol protocol = ConnectionProtocol.Tcp;
+
     private string serverAddress = "127.0.0.1:4530";
     private string applicationName = "TeamFightServer";
 
@@ -67,6 +69,12 @@ public class PhotonEngine : MonoBehaviour,IPhotonPeerListener
     public void OnStatusChanged(StatusCode statusCode)
     {
         Debug.Log("OnStatusChanged : " + statusCode.ToString());
+        switch (statusCode)
+        {
+            case StatusCode.Connect:
+                SendMsg(new MessageBase((int)UIManager.MsgType.OnConnectedToServer));
+                break;
+        }
     }
 
     public void RegisterController(OperationCode opCode, ControllerBase controller)

@@ -76,11 +76,11 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="Photon3Unity3D">
-      <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
-    </Reference>
     <Reference Include="LitJson">
       <HintPath>Assets\Plugins\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="TeamFightCommon">
       <HintPath>Assets\Plugins\TeamFightCommon.dll</HintPath>
@@ -105,10 +105,17 @@
     <Compile Include="Assets\Scripts\Frame\Tool\Singleton.cs" />
     <Compile Include="Assets\Scripts\TeamFight\Managers\PhotonManager.cs" />
     <Compile Include="Assets\Scripts\TeamFight\Messages\MsgLogin.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\Messages\MsgServerList.cs" />
     <Compile Include="Assets\Scripts\TeamFight\Photon\Controller\ControllerBase.cs" />
     <Compile Include="Assets\Scripts\TeamFight\Photon\Controller\LoginController.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\Photon\Controller\ServerController.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\Photon\PhotonDelegateDefine.cs" />
     <Compile Include="Assets\Scripts\TeamFight\Photon\PhotonEngine.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\Photon\PhotonItemBase.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\UI\Item\ServerItem.cs" />
     <Compile Include="Assets\Scripts\TeamFight\UI\Panel\LoginPanel.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\UI\Panel\MainPanel.cs" />
+    <Compile Include="Assets\Scripts\TeamFight\UI\Panel\ServerPanel.cs" />
     <Compile Include="Assets\Scripts\TeamFight\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\TeamFight\UI\UIPanelBase.cs" />
   </ItemGroup>

@@ -9,6 +9,8 @@ public class UIManager : ManagerBase
 
     public enum MsgType
     {        
+        OnConnectedToServer,
+        OnGetServerList
     }
 
     private void Awake()
